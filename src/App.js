@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import Header from "./layout/Header";
+import Footer from "./layout/Footer";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Counter from "./components/counter/Counter";
+import Pnf from "./components/Pnf";
+import Todo from "./components/todo/Todo";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Fragment>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Counter />} />
+        <Route path={`/counter`} element={<Counter />} />
+        <Route path={`/todo`} element={<Todo />} />
+        <Route path={`/*`} element={<Pnf />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+   </Fragment>
   );
 }
 
 export default App;
+ 
